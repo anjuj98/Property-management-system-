@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Property_rental_management_system.Models.property>
+
+@{
+    ViewBag.Title = "UserIndex";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    var username = Session["Username"] as string;
+    if (!string.IsNullOrEmpty(username))
+    {
+        username = username.Trim();
+        var indexOfAtSymbol = username.IndexOf('@');
+        if (indexOfAtSymbol != -1)
+        {
+            var name = username.Substring(0, indexOfAtSymbol);
+            username = char.ToUpper(name[0]) + name.Substring(1);
+        }
+    }
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="~/Content/css/userHome.css" rel="stylesheet" />
+    <link href="~/Content/css/userIndexBackground.css" rel="stylesheet" />
+</head>
+<body>
+
+
+
+    @if (!string.IsNullOrEmpty(username))
+    {
+        <h3>Welcome @username</h3>
+    }
+
+
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="@Url.Content(item.property_image)" class="card-img-top" alt="Property Image">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.property_name)</h5>
+                            <p class="card-text">
+                                <strong>Property Type:</strong> @Html.DisplayFor(modelItem => item.property_type)<br>
+                                <strong>Available For:</strong> @Html.DisplayFor(modelItem => item.available_for)<br>
+                                <strong>Available From:</strong> @Html.DisplayFor(modelItem => item.available_from)<br>
+                                <strong>Rent Amount:</strong> @Html.DisplayFor(modelItem => item.rent_amount)<br>
+                                <strong>Rent Type:</strong> @Html.DisplayFor(modelItem => item.rent_type)<br>
+                                <strong>Address:</strong> @Html.DisplayFor(modelItem => item.address)<br>
+                                <strong>State:</strong> @Html.DisplayFor(modelItem => item.state)<br>
+                                <strong>City:</strong> @Html.DisplayFor(modelItem => item.city)<br>
+                                <strong>Property Description:</strong> @Html.DisplayFor(modelItem => item.property_description)<br>
+                                <strong>Status:</strong> @Html.DisplayFor(modelItem => item.status)<br>
+                            </p>
+                            <a href="tel:@Html.DisplayFor(modelItem => item.phone_number)" class="btn btn-primary">
+                                <i class="fa fa-phone"></i> Call Now @Html.DisplayFor(modelItem => item.phone_number)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <script src="~/Scripts/javascript/AutoHideAlert.js"></script>
+
+</body>
+</html>

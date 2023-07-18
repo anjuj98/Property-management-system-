@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Property_rental_management_system.Models.Messages>
+
+@{
+    ViewBag.Title = "MessageDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="~/Content/css/tableStyles.css" rel="stylesheet" />
+
+<<div class="main">
+    <h2 class="heading">Messages</h2>
+
+    <div class="table-wrapper">
+        <table class="table table-striped">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Full_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Full_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteMessages", new { id = item.Id }, new { @class = "btn btn-danger", style = "width: 80px;" })
+            </td>
+        </tr>
+    }
+
+</table>
+        </div>
+    </div>

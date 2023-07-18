@@ -1,0 +1,22 @@
+﻿
+.card {
+    width: 400px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-actions {
+    margin-top: 20px;
+}
+.main {
+    background-image: url('../images/pexels-max-rahubovskiy-6890397.jpg');
+    background-size: cover;
+}

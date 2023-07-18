@@ -1,0 +1,69 @@
+﻿.form-horizontal {
+    margin: 0 auto;
+    max-width: 600px;
+    margin-top: 50px;
+    background-image: url('../images/signup.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+
+
+h2 {
+    text-align: center;
+    color: white;
+}
+
+/* Add some space between form fields */
+.form-group {
+    margin-bottom: 20px;
+}
+.error-message {
+    color: red;
+}
+
+/* Style form labels */
+.control-label {
+    font-weight: bold;
+    color: white;
+}
+
+/* Style form inputs */
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+
+.text-danger {
+    color: red;
+}
+
+/* Style the submit button */
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 30%;
+}
+
+.btn-default {
+    background-color: #e7e7e7;
+    color: black;
+}
+
+/* Style the "Back to List" link */
+.back-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+}

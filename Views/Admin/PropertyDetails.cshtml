@@ -1,0 +1,148 @@
+﻿@model IEnumerable<Property_rental_management_system.Models.property>
+@{
+    ViewBag.Title = "PropertyDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="~/Content/css/tableStyles.css" rel="stylesheet" />
+
+@if (TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-info">
+        <strong>Information ! </strong>@TempData["InfoMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
+else if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Success ! </strong>@TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
+else if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Error ! </strong>@TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+<div class="main">
+    <h2 class="heading">Property details</h2>
+
+    <p>
+        @Html.ActionLink("Add new property", "insertProperty", null, new { @class = "btn btn-success" })
+    </p>
+    <div class="table-wrapper">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.property_type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.property_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.available_for)
+                </th>
+                <th>
+                        @Html.DisplayNameFor(model => model.available_from)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rent_amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rent_type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.state)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.city)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.phone_number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.property_image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.property_description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.status)
+                </th>
+                <th>Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.property_type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.property_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.available_for)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.available_from)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rent_amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rent_type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.state)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.city)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phone_number)
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.property_image))
+                        {
+                            <img src="@Url.Content(item.property_image)" width="150px" height="100px" />
+                        }
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.property_description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "updatePropertyDetails", new { id = item.propertyId }, new { @class = "btn btn-primary", style = "margin-bottom: 10px; width: 80px;" })
+
+                        @Html.ActionLink("Delete", "Delete", new { id = item.propertyId }, new { @class = "btn btn-danger", style = "width: 80px;" })
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

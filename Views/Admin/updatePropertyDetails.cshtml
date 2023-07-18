@@ -1,0 +1,199 @@
+﻿@model Property_rental_management_system.Models.property
+
+@{
+    ViewBag.Title = "updatePropertyDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="~/Content/css/signup.css" rel="stylesheet" />
+    <link href="~/Content/css/background.css" rel="stylesheet" />
+</head>
+<body>
+
+    @if (TempData["InfoMessage"] != null)
+    {
+        <div class="alert alert-info">
+            <strong>Information ! </strong>@TempData["InfoMessage"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+
+    @using (Html.BeginForm("updatePropertyDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h2>Update property details</h2>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.propertyId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.property_type, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.property_type, new SelectList(
+         new List<SelectListItem>
+         {
+             new SelectListItem { Text = "Flat", Value = "Flat" },
+             new SelectListItem { Text = "House", Value = "House" },
+             new SelectListItem { Text = "Room", Value = "Room" }
+
+         }, "Value", "Text"), "Select an option", new { @class = "form-control dropdown-white" })
+
+                    @Html.ValidationMessageFor(model => model.property_type, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.property_name, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.property_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.property_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.available_for, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.available_for, new SelectList(
+         new List<SelectListItem>
+         {
+             new SelectListItem { Text = "Bachelors", Value = "Bachelors" },
+             new SelectListItem { Text = "Family", Value = "Family" },
+             new SelectListItem { Text = "Males only", Value = "MalesOnly" },
+             new SelectListItem { Text = "Females only", Value = "FemalesOnly" },
+             new SelectListItem { Text = "All", Value = "All" }
+         }, "Value", "Text"), "Select an option", new { @class = "form-control dropdown-white" })
+
+                    @Html.ValidationMessageFor(model => model.available_for, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.available_from, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.available_from, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.available_from, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.rent_amount, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.rent_amount, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.rent_amount, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.rent_type, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.rent_type, new SelectList(
+                    new List<SelectListItem>
+                    {
+                      new SelectListItem { Text = "Monthly", Value = "Monthly" },
+                      new SelectListItem { Text = "Yearly", Value = "Yearly" }
+                    }, "Value", "Text"), "Select an option", new { @class = "form-control dropdown-white" })
+
+                    @Html.ValidationMessageFor(model => model.rent_type, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.address, new { cols = 50, htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.state, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.state, new SelectList(
+        new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Kerala", Value = "Kerala" },
+            new SelectListItem { Text = "Tamil Nadu", Value = "Tamil Nadu" },
+            new SelectListItem { Text = "Haryana", Value = "Haryana" },
+            new SelectListItem { Text = "Goa", Value = "Goa" }
+        }, "Value", "Text"), "Select an option", new { @class = "form-control dropdown-white" })
+
+                    @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.city, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.city, new SelectList(
+        new List<SelectListItem>
+        {
+        }, "Value", "Text"), "Select an option", new { @class = "form-control dropdown-white" })
+
+                    @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.phone_number, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.phone_number, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.phone_number, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.property_image, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    <input type="file" name="file" />
+                    @Html.ValidationMessageFor(model => model.property_image, "", new { @class = "text-danger fs-5 " })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.property_description, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.property_description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.property_description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.status, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.status, new SelectList(
+                new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Available", Value = "Available" },
+                    new SelectListItem { Text = "Currently not available", Value = "NotAvailable" }
+                }, "Value", "Text"), "Select an option", new { @class = "form-control dropdown-white" })
+                    @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Update" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "PropertyDetails")
+    </div>
+
+    @section Scripts {
+        <script src="~/Scripts/javascript/Signup.js"></script>
+
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>

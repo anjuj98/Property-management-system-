@@ -1,0 +1,21 @@
+﻿
+.card {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.card .card-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card .card-body {
+    padding: 10px 20px;
+    background-color:linen;
+}
+.main {
+    background-image: url('../images/pexels-max-rahubovskiy-6890397.jpg');
+    background-size: cover;
+}
+

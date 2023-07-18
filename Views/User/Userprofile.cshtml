@@ -1,0 +1,62 @@
+﻿@model List<Property_rental_management_system.Models.Signup>
+
+
+@{
+    ViewBag.Title = "Userprofile";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="~/Content/css/UserProfile.css" rel="stylesheet" />
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Error!</strong> @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
+<div class="main">
+    @foreach (var signup in Model)
+    {
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@signup.Firstname @signup.Lastname</h5>
+                <dl class="dl-horizontal">
+                    <dt>Date of Birth:</dt>
+                    <dd>@Html.DisplayFor(model => signup.Dateofbirth)</dd>
+                    <dt>Gender:</dt>
+                    <dd>@Html.DisplayFor(model => signup.Gender)</dd>
+                    <dt>Phone Number:</dt>
+                    <dd>@Html.DisplayFor(model => signup.Phonenumber)</dd>
+                    <dt>Email:</dt>
+                    <dd>@Html.DisplayFor(model => signup.Email)</dd>
+                    <dt>Address:</dt>
+                    <dd>@Html.DisplayFor(model => signup.Address)</dd>
+                    <dt>State:</dt>
+                    <dd>@Html.DisplayFor(model => signup.State)</dd>
+                    <dt>City:</dt>
+                    <dd>@Html.DisplayFor(model => signup.City)</dd>
+                    <dt>Pincode:</dt>
+                    <dd>@Html.DisplayFor(model => signup.Pincode)</dd>
+                </dl>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.ActionLink("Edit profile", "updateUserDetails", new { id = signup.Id }, new { @class = "btn btn-primary", style = "margin-bottom: 10px; width: 100px;" })
+                        @Html.ActionLink("Deactivate account", "UserDelete", new { id = signup.Id }, new { @class = "btn btn-danger", style = "width: 100px;" })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <script src="~/Scripts/javascript/AutoHideAlert.js"></script>
+</div>
+

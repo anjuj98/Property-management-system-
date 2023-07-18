@@ -1,0 +1,66 @@
+﻿@model Property_rental_management_system.Models.Messages
+
+@{
+    ViewBag.Title = "DeleteMessages";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="~/Content/css/Deactivateaccount.css" rel="stylesheet" />
+
+<div class="main">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title"> Delete message</h2>
+
+            <h3>Are you sure you want to delete this message?</h3>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Full_name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Full_name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Phone_number)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone_number)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Message)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Message)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-danger" /> |
+                        @Html.ActionLink("Back to List", "MessageDetails")
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

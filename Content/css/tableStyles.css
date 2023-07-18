@@ -1,0 +1,21 @@
+﻿
+
+.table {
+    max-width: 70%;
+}
+.main{
+    justify-content:center;
+}
+.table-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.header-text {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.heading {
+    text-align:center;
+}

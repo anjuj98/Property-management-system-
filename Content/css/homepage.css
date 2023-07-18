@@ -1,0 +1,78 @@
+﻿
+.footer {
+    background-color: #111;
+    
+}
+
+
+    .socialicons {
+        display: flex;
+        justify-content: center;
+    }
+
+        .socialicons a {
+            text-decoration: none;
+            padding: 10px;
+            background-color: white;
+            margin: 10px;
+            border-radius: 50%;
+        }
+
+            .socialicons a i {
+                font-size: 2em;
+                color: black;
+                opacity: 0.9;
+            }
+            /*hover effect on icons */
+            .socialicons a:hover {
+                background-color: #111;
+                transition: 0.5s;
+            }
+
+.footernav {
+    margin: 20px 0;
+}
+
+        .footernav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+            .footernav ul li a {
+                color: white;
+                margin: 20px;
+                text-decoration: none;
+                font-size: 1.3em;
+                opacity: 0.7;
+                transition: 0.5s;
+            }
+
+                .footernav ul li a:hover {
+                    opacity: 1;
+                }
+
+    .footerbottom {
+        background-color: #000;
+        padding: 20px;
+        text-align: center;
+    }
+
+        .footerbottom p {
+            color: white;
+        }
+
+    .designer {
+        opacity: 0.7;
+        letter-spacing: 1px;
+        font-weight: 400;
+        margin: 0px 5px;
+    }
+
+.footer {
+    position: page;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+

@@ -1,0 +1,125 @@
+﻿@model Property_rental_management_system.Models.Messages
+
+
+@{
+    ViewBag.Title = "Contact";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="~/Content/css/contactus.css" rel="stylesheet" />
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contact</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <section class="contact">
+            <div class="content">
+                <h2>Contact us</h2>
+                <p>If you have any questions or inquiries, please don't hesitate to contact us using the information below:</p>
+            </div>
+            <div class="container">
+                <div class="contactinfo">
+                    <div class="box">
+                        <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                        <div class="text">
+                            <h2>Address</h2>
+                            <p>123 Main Street, Kochi, India</p>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                        <div class="text">
+                            <h2>Phone</h2>
+                            <p>+91 7654789789</p>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <div class="icon">
+                            <a class="icon" href="https://mail.google.com/mail/?view=cm&to=homeaway@gmail.com">
+                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="text">
+                            <h2>Email</h2>
+                            <p>homeaway@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contactform">
+                    <form class="form">
+                        <div class="form-horizontal">
+                            <h4>Send message</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Full_name, htmlAttributes: new { @class = "control-label col-md-3" })
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Full_name, new { htmlAttributes = new { @class = "form-control", id = "name", placeholder = "Enter your full name", onfocusout = "checkFullname()" } })
+                                @Html.ValidationMessageFor(model => model.Full_name, "", new { @class = "error-message text-danger" })
+                            </div>
+                        </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label  col-md-4" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", id = "email", placeholder = "Enter your email address", onfocusout = "checkEmail()" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "error-message text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Phone_number, htmlAttributes: new { @class = "control-label  col-md-4" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Phone_number, new { htmlAttributes = new { @class = "form-control", id = "phone", placeholder = " Enter your phone number", onfocusout = "checkPhone()" } })
+                                    @Html.ValidationMessageFor(model => model.Phone_number, "", new { @class = "error-message text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label  col-md-3" })
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.Message, new { cols = 50, htmlAttributes = new { @class = "form-control", id = "message", placeholder = " Enter your message", onfocusout = "checkMessage()" } })
+                                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "error-message text-danger" })
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Send" class="btn btn-info" id="button" onclick="checkValidation()" />
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>                
+                </div>
+
+                <div class="contactmap">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d62866.62734506176!2d76.3315771275241!3d10.003291366050483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
+                        1!4m8!3e6!4m0!4m5!1s0x3b080c9d30c1c631%3A0x943a380d74e7376d!2sClaySys%20Technologies%2C%20Infopark%20Phase%202%2C%20Kakkanad%2C%20Kerala!3m2!1d10.0032939!2d76.372777!5e0!3m2!1sen!2sin!4v1688223543631!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen=""
+                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    }
+
+    
+    <script src="~/Scripts/javascript/contactus.js"></script>
+</body>
+</html>

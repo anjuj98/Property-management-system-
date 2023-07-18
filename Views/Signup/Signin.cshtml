@@ -1,0 +1,73 @@
+﻿@model Property_rental_management_system.Models.Signin
+
+@{
+    ViewBag.Title = "Signin";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/css/signin.css" rel="stylesheet" />
+    <link href="~/Content/css/background.css" rel="stylesheet" />
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h2>Sign in</h2>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your username" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your password" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+                <small class="error-message" style="color:red;">@Html.ViewData["Message"]</small>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Sign in" class="btn btn-info" />
+                </div>
+            </div>
+
+            <!--
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.ActionLink("Forgot Password?", "ForgotPassword", "Account")
+                </div>
+            </div>
+            -->
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 not-a-member" style="color:white;">
+                    Not yet a member? <a href="@Url.Action("AddDetails", "Signup")">Sign up</a>
+                </div>
+            </div>
+
+
+        </div>
+    }
+
+    <div>
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>

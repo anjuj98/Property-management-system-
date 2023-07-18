@@ -1,0 +1,80 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.main_about {
+    background-image: url('../images/contactus.jpg');
+    background-size: cover;
+}
+
+.heading {
+    text-align: center;
+    padding-top: 8%;
+}
+
+    .heading h1 {
+        font-size: 50px;
+        color: white;
+        padding-bottom: 50px;
+    }
+
+    .heading p {
+        font-weight: 300;
+        color: white;
+        font-size: large;
+        text-align: justify-all;
+        align-content: center;
+    }
+
+.about-us {
+    display: flex;
+    align-items: center;
+    width: 85%;
+    margin: auto;
+}
+
+    .about-us img {
+        flex: 0 50%;
+        max-width: 50%;
+        height: auto;
+    }
+
+.content {
+    padding: 35px;
+}
+
+    .content h2 {
+        color: white;
+        font-size: 24px;
+        text-align: justify;
+    }
+
+    .content p {
+        color: white;
+        font-size: 18px;
+        line-height: 1.5;
+        margin: 15px 0px;
+        justify-content: flex-end;
+    }
+
+@media(max-width:768px) {
+    .about-us {
+        flex-direction: column;
+    }
+
+        .about-us img {
+            flex: 0 100%;
+            max-width: 100%;
+        }
+
+    .content {
+        flex: 0 100%;
+        max-width: 100%;
+        padding: 15px;
+    }
+}
+
+

@@ -1,0 +1,13 @@
+﻿
+
+.error-message {
+    color: #dc3545;
+    display: none;
+    margin-top: 5px;
+    font-size:100%;
+    
+}
+
+.error-message.error-message-visible {
+        display: block;
+    }

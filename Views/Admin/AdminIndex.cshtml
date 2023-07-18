@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "AdminIndex";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var username = Session["Username"] as string;
+    if (!string.IsNullOrEmpty(username))
+    {
+        username = username.Trim();
+        var indexOfAtSymbol = username.IndexOf('@');
+        if (indexOfAtSymbol != -1)
+        {
+            var name = username.Substring(0, indexOfAtSymbol);
+            username = char.ToUpper(name[0]) + name.Substring(1);
+        }
+    }
+
+
+}
+<link href="~/Content/css/slieshow.css" rel="stylesheet" />
+<main>
+    <div class="welcomeMessage">
+        @if (!string.IsNullOrEmpty(username))
+        {
+            <h3>Welcome @username</h3>
+        }
+    </div>
+    <div class="slideshow-container">
+        <div class="content-items">
+            <img src="~/Content/images/pexels-max-rahubovskiy-6890397.jpg" alt="Slide 1" />
+
+        </div>
+        <div class="content-items">
+            <img src="~/Content/images/pexels-charlotte-may-5824495.jpg" alt="Slide 2" />
+        </div>
+        <div class="content-items">
+            <img src="~/Content/images/pexels-max-rahubovskiy-7018391.jpg" alt="Slide 3" />
+
+        </div>
+        <div class="content-items">
+            <img src="~/Content/images/pexels-kindel-media-7579201.jpg" alt="Slide 4" />
+        </div>
+        <div class="content-items">
+            <img src="~/Content/images/pexels-max-rahubovskiy-7031715.jpg" alt="Slide 5" />
+        </div>
+    </div>
+
+    <script src="~/Scripts/javascript/slideshow.js"></script>
+</main>
+
+
+
