@@ -55,10 +55,11 @@
                 {
                     @Html.AntiForgeryToken()
 
-                    <div class="form-actions no-color">
-                        <input type="submit" value="Delete" class="btn btn-danger" /> |
-                        @Html.ActionLink("Back to List", "MessageDetails")
-                    </div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                <input type="button" value="Back to List" onclick="location.href='@Url.Action("MessageDetails", "Admin")'" class="btn btn-info">
+
+            </div>
                 }
             </div>
         </div>

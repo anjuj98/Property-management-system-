@@ -1,4 +1,6 @@
-﻿function preventback() {
+﻿
+//Preventing back button by setting time out of zero seconds
+function preventback() {
     window.history.forward();
 }
 

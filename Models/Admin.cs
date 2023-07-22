@@ -38,6 +38,7 @@ namespace Property_rental_management_system.Models
 
 
         [DisplayName("Confirm password")]
+        [DataType(DataType.Password)]
         [Required(ErrorMessage = "Please confirm your password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string Confirmpassword { get; set; }

@@ -68,7 +68,6 @@ namespace Property_rental_management_system.Repository
 
             }
         }
-
         /// <summary>
         /// get user details
         /// </summary>
@@ -119,6 +118,7 @@ namespace Property_rental_management_system.Repository
             }
 
         }
+
         /// <summary>
         /// signin
         /// </summary>

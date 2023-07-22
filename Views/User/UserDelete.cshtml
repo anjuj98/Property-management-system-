@@ -90,10 +90,11 @@
             {
                 @Html.AntiForgeryToken()
 
-                <div class="form-actions no-color">
-                    <input type="submit" value="Deactivate" class="btn btn-danger" /> |
-                    @Html.ActionLink("Back to Profile", "Userprofile")
-                </div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Deactivate" class="btn btn-danger" /> 
+            <input type="button" value="Back to profile" onclick="location.href='@Url.Action("Userprofile", "User")'" class="btn btn-info">
+
+        </div>
             }
         </div>
     </div>

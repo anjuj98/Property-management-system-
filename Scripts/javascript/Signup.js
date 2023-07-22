@@ -1,5 +1,7 @@
-﻿document.getElementById('state').addEventListener('change', populateCities);
+﻿
+//Populating city based on selected state value
 
+document.getElementById('state').addEventListener('change', populateCities);
 function populateCities() {
     var stateInput = document.getElementById('state');
     var cityInput = document.getElementById('city');

@@ -10,7 +10,34 @@
     <link href="~/Content/css/background.css" rel="stylesheet" />
 </head>
 <body>
+    @if (TempData["SignupSuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>Success ! </strong>@TempData["SignupSuccessMessage"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
 
+    else if (TempData["SignupErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Error ! </strong>@TempData["SignupErrorMessage"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+    else if (TempData["PasswordChangeMessage"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>Success ! </strong>@TempData["PasswordChangeMessage"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -67,6 +94,7 @@
     </div>
 
     @section Scripts {
+        <script src="~/Scripts/javascript/AutoHideAlert.js"></script>
         @Scripts.Render("~/bundles/jqueryval")
     }
 </body>

@@ -53,11 +53,11 @@ namespace Property_rental_management_system.Controllers
                      homepageRepository signupRepo = new homepageRepository();
                      if (signupRepo.AddDetails(signup))
                      {
-                        TempData["SuccessMessage"] = "Signup  successfull....!";
+                        TempData["SignupSuccessMessage"] = "Signup  successfull.Now Sign in please....! ";
                     }
                     else
                     {
-                        TempData["ErrorMessage"] = "Unable to save user details.";
+                        TempData["SignupErrorMessage"] = "Unable to save user details.";
 
                     }
                 }
@@ -66,7 +66,7 @@ namespace Property_rental_management_system.Controllers
              }
             catch (SqlException ex)
             {
-                TempData["ErrorMessage"] = ex.Message; // Store the SQL error message
+                TempData["SignupErrorMessage"] = ex.Message; // Store the SQL error message
                 LogError(logFilePath, ex);
 
                 return View();
@@ -74,7 +74,7 @@ namespace Property_rental_management_system.Controllers
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "An error occurred: " + ex.Message;
+                TempData["SignupErrorMessage"] = "An error occurred: " + ex.Message;
                 LogError(logFilePath, ex);
 
                 return View();
@@ -117,7 +117,6 @@ namespace Property_rental_management_system.Controllers
                     Session["password"] = signin.Password.ToString();
                     FormsAuthentication.SetAuthCookie(signin.Username, false);
                     return RedirectToAction("AdminIndex", "Admin");
-
                 }
                 else
                 {

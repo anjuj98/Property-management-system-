@@ -144,7 +144,7 @@ namespace Property_rental_management_system.Repository
         }
 
         /// <summary>
-        /// Get  property details By Id
+        /// Get  property details By Id 
         /// </summary>
         /// <param name="propertyId"></param>
         /// <returns></returns>
@@ -202,7 +202,7 @@ namespace Property_rental_management_system.Repository
         /// <param name="property"></param>
         /// <param name="file"></param>
         /// <returns></returns>
-        public bool UpdateProperty(property property, HttpPostedFileBase file)
+        public bool UpdateProperty(property property, HttpPostedFileBase file,string image)
         {
 
             try
@@ -241,7 +241,7 @@ namespace Property_rental_management_system.Repository
                 }
                 else
                 {
-                    command.Parameters.AddWithValue("@property_image", DBNull.Value);
+                    command.Parameters.AddWithValue("@property_image",image);
                 }
                 command.Parameters.AddWithValue("@property_description", property.property_description);
                 command.Parameters.AddWithValue("@status", property.status);

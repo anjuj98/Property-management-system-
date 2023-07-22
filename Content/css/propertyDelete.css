@@ -1,0 +1,18 @@
+﻿.dl-horizontal {
+    display: grid;
+    gap: 10px;
+}
+
+    .dl-horizontal div {
+        display: grid;
+        grid-template-columns: minmax(150px, max-content) auto;
+    }
+
+    .dl-horizontal dt {
+        font-weight: bold;
+        
+    }
+
+    .dl-horizontal dd {
+        margin: 0;
+    }

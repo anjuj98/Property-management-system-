@@ -41,7 +41,6 @@ namespace Property_rental_management_system.Controllers
         /// <returns></returns>
         public ActionResult AdminIndex()
         {
-
             if (Session["username"] == null || Session["password"] == null)
             {
                 return RedirectToAction("Signin", "Signup");
@@ -132,6 +131,7 @@ namespace Property_rental_management_system.Controllers
         public ActionResult updatePropertyDetails(int id)
         {
             var property = _property_DAL.GetPropertiesById(id).FirstOrDefault();
+            Session["property_image"] = property.property_image;
             if(property == null)
             {
                 TempData["InfoMessage"] = "Property not available with this ID";
@@ -149,11 +149,12 @@ namespace Property_rental_management_system.Controllers
         [HttpPost,ActionName("updatePropertyDetails")]
         public ActionResult updatePropertyDetails(property property, HttpPostedFileBase file)
         {
+            string image = Session["property_image"].ToString();
             try
             {
                 if(ModelState.IsValid)
                 {
-                    bool IsUpdated = _property_DAL.UpdateProperty(property, file);
+                    bool IsUpdated = _property_DAL.UpdateProperty(property, file, image);
 
                     if(IsUpdated)
                     {
@@ -296,12 +297,12 @@ namespace Property_rental_management_system.Controllers
                 string result = signupRepo.DeleteUser(id);
                 if (result.Contains("deleted"))
                 {
-                    TempData["SuccessMessage"] = result;
+                    TempData["DeleteSuccessMessage"] = result;
 
                 }
                 else
                 {
-                    TempData["ErrorMessage"] = result;
+                    TempData["DeleteErrorMessage"] = result;
 
                 }
                 return RedirectToAction("UserDetails", "Admin");
@@ -332,27 +333,23 @@ namespace Property_rental_management_system.Controllers
         /// <returns></returns>
 
         [HttpPost]
-
         public ActionResult AddNewAdmin(Admin admin)
-        {
-            
+        {            
             homepageRepository signupRepo = new homepageRepository();
-
             try
             {
                 if (ModelState.IsValid)
                 {
                     if (signupRepo.AddAdmin(admin))
                     {
-                        TempData["SuccessMessage"] = "Admin details saved  successfully....!";
+                        TempData["AddAdminSuccessMessage"] = "Admin details saved  successfully....!";
                     }
                     else
                     {
-                        TempData["ErrorMessage"] = "Unable to save message details.";
-
+                        TempData["AddAdminErrorMessage"] = "Unable to save admin details.";
                     }
                 }
-                return RedirectToAction("AdminIndex");
+                return RedirectToAction("AddNewAdmin");
             }
             catch (SqlException ex)
             {
@@ -432,12 +429,12 @@ namespace Property_rental_management_system.Controllers
                 string result = repository.DeleteMessages(id);
                 if (result.Contains("deleted"))
                 {
-                    TempData["SuccessMessage"] = result;
+                    TempData["MessageDeleteSuccessMessage"] = result;
 
                 }
                 else
                 {
-                    TempData["ErrorMessage"] = result;
+                    TempData["MessageDeleteErrorMessage"] = result;
 
                 }
                 return RedirectToAction("MessageDetails", "Admin");
@@ -478,9 +475,8 @@ namespace Property_rental_management_system.Controllers
                     if (enteredPassword == oldPassword)
                     {
                         string newPassword = passwordChange.NewPassword;//generating new password
-
                         repository.UpdateAdminPassword(GetSigninUsername(), newPassword);
-
+                        TempData["PasswordChangeMessage"] = "Password changed successfully.Please sign in again..!";
                         return RedirectToAction("Signin", "Signup");
                     }
                     else
@@ -488,7 +484,6 @@ namespace Property_rental_management_system.Controllers
                         ModelState.AddModelError("OldPassword", "Password incorrect");
                     }
                 }
-
                 return View(passwordChange);
             }
             catch (Exception ex)

@@ -168,6 +168,7 @@
     <Content Include="Content\css\errorMessage.css" />
     <Content Include="Content\css\homepage.css" />
     <Content Include="Content\css\Menubar.css" />
+    <Content Include="Content\css\propertyDelete.css" />
     <Content Include="Content\css\signin.css" />
     <Content Include="Content\css\signup.css" />
     <Content Include="Content\css\slieshow.css" />
@@ -210,7 +211,6 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\javascript\AutoHideAlert.js" />
     <Content Include="Scripts\javascript\BackButtonRestrict.js" />
-    <Content Include="Scripts\javascript\contactus.js" />
     <Content Include="Scripts\javascript\menubar.js" />
     <Content Include="Scripts\javascript\ProfileEdit.js" />
     <Content Include="Scripts\javascript\Signup.js" />

@@ -1,4 +1,5 @@
 ﻿
+//Validation for first name field
 function checkFirstName() {
     var isName = /^[a-zA-Z]+$/;
     let name = document.getElementById('firstname');
@@ -16,6 +17,7 @@ function checkFirstName() {
     }
 }
 
+//Validation for last name field
 function checkLastName() {
     var isName = /^[a-zA-Z]+$/;
     let name = document.getElementById('lastname');
@@ -30,6 +32,7 @@ function checkLastName() {
     }
 }
 
+//Validation for email field
 function checkEmail() {
     var isEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     let emailField = document.getElementById('email');
@@ -46,6 +49,7 @@ function checkEmail() {
     }
 }
 
+//Validation for phone number field
 function checkPhone() {
     var isPhone = /^\d{10}$/;
     let phoneField = document.getElementById('phone');
@@ -60,8 +64,33 @@ function checkPhone() {
     }
 }
 
-function checkAddress()
+//Validation for state field
+function checkState()
 {
+    let stateField = document.getElementById("state");
+    if (stateField.value.trim() === "") {
+        SetError(stateField, "State is required");
+    }
+    else {
+        setSuccess(stateField)
+
+    }
+}
+
+//Validation for city field
+function checkCity() {
+    let cityField = document.getElementById("city");
+    if (cityField.value.trim() === "") {
+        SetError(cityField, "City is required");
+    }
+    else {
+        setSuccess(cityField)
+
+    }
+}
+
+//Validation for address field
+function checkAddress() {
     let addressField = document.getElementById("address");
     if (addressField.value.trim() === "") {
         SetError(addressField, "Address is required");
@@ -72,6 +101,7 @@ function checkAddress()
     }
 }
 
+//Validation for pincode field
 function checkPincode() {
     var isPincode = /^[0-9]{6}$/;
     let pincodeField = document.getElementById("pincode");
@@ -86,6 +116,7 @@ function checkPincode() {
     }
 }
 
+//Setting error message 
 function SetError(input, message) {
     let submitbutton = document.getElementById("button");
     const formControl = input.parentElement;
@@ -95,6 +126,7 @@ function SetError(input, message) {
     submitbutton.disabled = true;
 }
 
+//Setting success display
 function setSuccess(input) {
     let submitbutton = document.getElementById("button");
     const formControl = input.parentElement;
@@ -102,4 +134,18 @@ function setSuccess(input) {
     errorDiv.innerText = "";
     errorDiv.style.display = "none";
     submitbutton.disabled = false;
+}
+
+//Checking validations when click on button
+function checkValidation() {
+    var isFirstNameValid = checkFirstName();
+    var isLastNameValid = checkLastName();
+    var isEmailValid = checkEmail();
+    var isPhoneValid = checkPhone();
+    var isAddressValid = checkAddress();
+    var isStateValid = checkState();
+    var isCityValid = checkCity();
+    var isPincodeValid = checkPincode();
+
+    return isFirstNameValid && isLastNameValid && isEmailValid && isPhoneValid && isAddressValid && isPincodeValid && isStateValid && isCityValid;
 }

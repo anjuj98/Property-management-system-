@@ -152,12 +152,12 @@ namespace Property_rental_management_system.Controllers
 
                     if (IsUpdated)
                     {
-                        TempData["SuccessMessage"] = "Profile details updated successfully....!";
+                        TempData["UpdateSuccessMessage"] = "Profile details updated successfully....!";
 
                     }
                     else
                     {
-                        TempData["ErrorMessage"] = "Unable to update profile details.";
+                        TempData["UpdateErrorMessage"] = "Unable to update profile details.";
 
                     }
                 
@@ -166,7 +166,7 @@ namespace Property_rental_management_system.Controllers
             }
             catch (SqlException ex)
             {
-                TempData["ErrorMessage"] = ex.Message; // Store the SQL error message
+                TempData["UpdateErrorMessage"] = ex.Message; // Store the SQL error message
                 LogError(logFilePath, ex);
 
                 return View();
@@ -174,7 +174,7 @@ namespace Property_rental_management_system.Controllers
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "An error occurred: " + ex.Message;
+                TempData["UpdateErrorMessage"] = "An error occurred: " + ex.Message;
                 LogError(logFilePath, ex);
 
                 return View();
@@ -225,12 +225,12 @@ namespace Property_rental_management_system.Controllers
                 string result = signupRepo.DeleteUser(id);
                 if (result.Contains("deleted"))
                 {
-                    TempData["SuccessMessage"] = result;
+                    TempData["SuccessUserMessage"] = result;
 
                 }
                 else
                 {
-                    TempData["ErrorMessage"] = result;
+                    TempData["ErrorUserMessage"] = result;
 
                 }
                 return RedirectToAction("Index", "Home");
@@ -292,6 +292,7 @@ namespace Property_rental_management_system.Controllers
                         string newPassword = passwordChange.NewPassword;//generating new password
 
                         repository.UpdatePassword(GetSigninUsername(), newPassword);
+                        TempData["PasswordChangeMessage"] = "Password changed successfully.Please sign in again..!";
 
                         return RedirectToAction("Signin", "Signup");
                     }

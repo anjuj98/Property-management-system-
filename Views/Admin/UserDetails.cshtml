@@ -21,20 +21,20 @@
         </div>
     }
 
-    else if (TempData["SuccessMessage"] != null)
+    else if (TempData["DeleteSuccessMessage"] != null)
     {
         <div class="alert alert-success">
-            <strong>Success ! </strong>@TempData["SuccessMessage"]
+            <strong>Success ! </strong>@TempData["DeleteSuccessMessage"]
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span>&times;</span>
             </button>
         </div>
     }
 
-    else if (TempData["ErrorMessage"] != null)
+    else if (TempData["DeleteErrorMessage"] != null)
     {
         <div class="alert alert-danger">
-            <strong>Error ! </strong>@TempData["ErrorMessage"]
+            <strong>Error ! </strong>@TempData["DeleteErrorMessage"]
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span>&times;</span>
             </button>

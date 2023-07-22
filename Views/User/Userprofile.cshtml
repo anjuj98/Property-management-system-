@@ -10,15 +10,25 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link href="~/Content/css/UserProfile.css" rel="stylesheet" />
 
-@if (TempData["ErrorMessage"] != null)
+@if (TempData["UpdateErrorMessage"] != null)
 {
     <div class="alert alert-danger">
-        <strong>Error!</strong> @TempData["ErrorMessage"]
+        <strong>Error!</strong> @TempData["UpdateErrorMessage"]
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span>&times;</span>
         </button>
     </div>
 }
+else if (TempData["UpdateSuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Success ! </strong>@TempData["UpdateSuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
 
 <div class="main">
     @foreach (var signup in Model)

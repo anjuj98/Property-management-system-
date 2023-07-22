@@ -67,47 +67,44 @@
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
                             @Html.LabelFor(model => model.Full_name, htmlAttributes: new { @class = "control-label col-md-3" })
-
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.Full_name, new { htmlAttributes = new { @class = "form-control", id = "name", placeholder = "Enter your full name", onfocusout = "checkFullname()" } })
-                                @Html.ValidationMessageFor(model => model.Full_name, "", new { @class = "error-message text-danger" })
+                                @Html.EditorFor(model => model.Full_name, new { htmlAttributes = new { @class = "form-control", id = "name", placeholder = "Enter your full name" } })
                             </div>
+                            @Html.ValidationMessageFor(model => model.Full_name, "", new { @class = "text-danger" })
                         </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label  col-md-4" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", id = "email", placeholder = "Enter your email address", onfocusout = "checkEmail()" } })
-                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "error-message text-danger" })
-                                </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label  col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", id = "email", placeholder = "Enter your email address" } })
                             </div>
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Phone_number, htmlAttributes: new { @class = "control-label  col-md-4" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Phone_number, new { htmlAttributes = new { @class = "form-control", id = "phone", placeholder = " Enter your phone number", onfocusout = "checkPhone()" } })
-                                    @Html.ValidationMessageFor(model => model.Phone_number, "", new { @class = "error-message text-danger" })
-                                </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Phone_number, htmlAttributes: new { @class = "control-label  col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Phone_number, new { htmlAttributes = new { @class = "form-control", id = "phone", placeholder = " Enter your phone number" } })
                             </div>
+                            @Html.ValidationMessageFor(model => model.Phone_number, "", new { @class = "text-danger" })
+                        </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label  col-md-3" })
-                                <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.Message, new { cols = 50, htmlAttributes = new { @class = "form-control", id = "message", placeholder = " Enter your message", onfocusout = "checkMessage()" } })
-                                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "error-message text-danger" })
-                                </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label  col-md-3" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.Message, new { cols = 50, htmlAttributes = new { @class = "form-control", id = "message", placeholder = " Enter your message" } })
                             </div>
-
-
+                            @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                        </div>
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Send" class="btn btn-info" id="button" onclick="checkValidation()" />
+                                    <input type="submit" value="Send" class="btn btn-info" id="button" />
 
                                 </div>
                             </div>
                         </div>
-                    </form>                
+                    </form>
                 </div>
 
                 <div class="contactmap">
@@ -118,8 +115,5 @@
             </div>
         </section>
     }
-
-    
-    <script src="~/Scripts/javascript/contactus.js"></script>
 </body>
 </html>

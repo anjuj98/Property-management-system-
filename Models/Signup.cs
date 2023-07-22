@@ -31,6 +31,8 @@ namespace Property_rental_management_system.Models
         public string Dateofbirth { get; set; }
 
         [DisplayName("Gender")]
+        [Required(ErrorMessage = "Gender is required")]
+
         public string Gender { get; set; }
 
 
@@ -76,6 +78,7 @@ namespace Property_rental_management_system.Models
         public string Password { get; set; }
 
         [DisplayName("Confirm password")]
+        [DataType(DataType.Password)]
         [Required(ErrorMessage = "Please confirm your password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string Confirmpassword { get; set; }
