@@ -109,6 +109,7 @@ namespace Property_rental_management_system.Controllers
                     Session["username"] = signin.Username.ToString();
                     Session["password"] = signin.Password.ToString();
                     FormsAuthentication.SetAuthCookie(signin.Username, false);
+                    Session["role"] = "User";
                     return RedirectToAction("UserIndex", "User");
                 }
                 else if (isValidAdmin)
@@ -116,6 +117,7 @@ namespace Property_rental_management_system.Controllers
                     Session["username"] = signin.Username.ToString();
                     Session["password"] = signin.Password.ToString();
                     FormsAuthentication.SetAuthCookie(signin.Username, false);
+                    Session["role"] = "Admin";
                     return RedirectToAction("AdminIndex", "Admin");
                 }
                 else

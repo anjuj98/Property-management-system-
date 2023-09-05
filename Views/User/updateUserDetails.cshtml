@@ -45,8 +45,8 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Dateofbirth, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Dateofbirth, new { htmlAttributes = new { @class = "form-control", max = new DateTime(2010, 12, 31).ToString("yyyy-MM-dd") } })
-                    @Html.ValidationMessageFor(model => model.Dateofbirth, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Dateofbirth, new { htmlAttributes = new { @class = "form-control", id = "birthdate",onfocusout= "validateDateOfBirth()" } })
+                    @Html.ValidationMessageFor(model => model.Dateofbirth, "", new { @class = "error-message text-danger" })
                 </div>
             </div>
 
@@ -113,12 +113,12 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Edit" class="btn btn-info" onclick="checkValidation()"/>
+                    <input type="submit" value="Edit" class="btn btn-info" id="button" onclick="checkValidation()"/>
+                    <input type="button" value="Back to profile" onclick="location.href='@Url.Action("Userprofile", "User")'" class="btn btn-success">
                 </div>
             </div>
         </div>
     }
-
 
     <!-- Bootstrap Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -152,7 +152,6 @@
         $('#exampleModal').modal('show');// Show the Bootstrap modal
         
     });
-
     $('#modalSaveButton').click(function () {
         // Perform AJAX request to update the details
         $.ajax({

@@ -252,7 +252,6 @@ namespace Property_rental_management_system.Controllers
         {
             FormsAuthentication.SignOut();
             Session.Clear();
-
             return RedirectToAction("Index", "Home");
         }
 
@@ -271,9 +270,7 @@ namespace Property_rental_management_system.Controllers
         /// </summary>
         /// <param name="passwordChange"></param>
         /// <returns></returns>
-
         [HttpPost]
-
         public ActionResult ChangePassword(passwordChange passwordChange)
         {
             try
@@ -283,9 +280,6 @@ namespace Property_rental_management_system.Controllers
                     homepageRepository repository = new homepageRepository();
 
                     string enteredPassword = Session["Password"] as string;//retrieving entered password from session variable
-
-                    string existingPassword = repository.GetExistingPassword(GetSigninUsername());
-
                     string oldPassword = passwordChange.OldPassword;
                     if (enteredPassword == oldPassword)
                     {

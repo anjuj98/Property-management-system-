@@ -8,7 +8,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link href="~/Content/css/UserProfile.css" rel="stylesheet" />
+<link href="~/Content/css/Deactivateaccount.css" rel="stylesheet" />
 
 @if (TempData["UpdateErrorMessage"] != null)
 {
@@ -56,15 +56,16 @@ else if (TempData["UpdateSuccessMessage"] != null)
                     <dd>@Html.DisplayFor(model => signup.Pincode)</dd>
                 </dl>
             </div>
-            <div class="card-footer">
-                <div class="row">
-                    <div class="col-md-6">
-                        @Html.ActionLink("Edit profile", "updateUserDetails", new { id = signup.Id }, new { @class = "btn btn-primary", style = "margin-bottom: 10px; width: 100px;" })
-                        @Html.ActionLink("Deactivate account", "UserDelete", new { id = signup.Id }, new { @class = "btn btn-danger", style = "width: 100px;" })
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-                    </div>
-                </div>
-            </div>
+           <div class="form-actions no-color">
+            @Html.ActionLink("Edit profile", "updateUserDetails", new { id = signup.Id }, new { @class = "btn btn-primary", style = "margin-bottom: 10px; width: 100px;" })
+            @Html.ActionLink("Deactivate account", "UserDelete", new { id = signup.Id }, new { @class = "btn btn-danger", style = "margin-bottom: 10px; width: 100px;" })
+
+           </div>
+            }        
         </div>
     }
     <script src="~/Scripts/javascript/AutoHideAlert.js"></script>

@@ -53,8 +53,14 @@
             </div>
         </nav>
         <div>
-
-            @RenderBody()
+            @if (User.Identity.IsAuthenticated && Session["role"].ToString() == "Admin")
+            {
+                @RenderBody()
+            }
+           else
+            {
+              <p>Sorry you don't have access to this page</p>
+            }
         </div>
 
         <footer class="footer">

@@ -19,23 +19,7 @@ namespace Property_rental_management_system.Common
             catch(Exception ex)
             { 
                 throw new Exception("Error in encode :"+ex.Message);
-            }
-            
+            }            
         }
-
-        public string Decode(string EncryptedData)
-        {
-            try
-            {
-                byte[] DecodeByte = Convert.FromBase64String(EncryptedData);
-                string DecryptedData = System.Text.Encoding.UTF8.GetString(DecodeByte);
-                return DecryptedData;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error in decode: " + ex.Message);
-            }
-        }
-
     }
 }

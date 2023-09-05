@@ -126,7 +126,7 @@ namespace Property_rental_management_system.Controllers
         /// <summary>
         /// GET: Getting property details for updating
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id"></param>  
         /// <returns></returns>
         public ActionResult updatePropertyDetails(int id)
         {
@@ -468,9 +468,6 @@ namespace Property_rental_management_system.Controllers
                     homepageRepository repository = new homepageRepository();
 
                     string enteredPassword = Session["Password"] as string;//retrieving entered password from session variable
-
-                    string existingPassword = repository.GetExistingAdminPassword(GetSigninUsername());
-
                     string oldPassword = passwordChange.OldPassword;
                     if (enteredPassword == oldPassword)
                     {

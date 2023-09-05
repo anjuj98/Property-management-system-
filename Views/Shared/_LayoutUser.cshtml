@@ -39,10 +39,16 @@
             </div>
         </nav>
 
-
-
         <div>
-            @RenderBody()
+            @if (User.Identity.IsAuthenticated && Session["role"].ToString() == "User")
+            {
+                @RenderBody()
+            }
+            else
+            {
+                <p>Sorry you don't have access to this page</p>
+            }
+
         </div>
 
         <footer class="footer">

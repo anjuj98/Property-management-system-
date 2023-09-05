@@ -34,7 +34,6 @@ namespace Property_rental_management_system.Repository
             try
             {
                 connection();
-                Common.Password EncryptData = new Common.Password();
                 SqlCommand command = new SqlCommand("spsignup", sqlConnection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@Firstname", Signup.Firstname);
@@ -282,7 +281,6 @@ namespace Property_rental_management_system.Repository
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@Id", Id);
                     command.Parameters.Add("@outputMessage", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
-
                     sqlConnection.Open();
                     command.ExecuteNonQuery();
                     result = command.Parameters["@outputMessage"].Value.ToString();

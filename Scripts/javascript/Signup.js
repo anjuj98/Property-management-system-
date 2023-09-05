@@ -5,9 +5,7 @@ document.getElementById('state').addEventListener('change', populateCities);
 function populateCities() {
     var stateInput = document.getElementById('state');
     var cityInput = document.getElementById('city');
-
     cityInput.innerHTML = '<option>--select--</option>';
-
     var selectedState = stateInput.value.toLowerCase();
 
     if (selectedState === 'kerala') {

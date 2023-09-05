@@ -32,6 +32,33 @@ function checkLastName() {
     }
 }
 
+//validation for date of birth field
+
+var dateOfBirthInput = document.getElementById('birthdate');
+
+function validateDateOfBirth() {
+    if (dateOfBirthInput.value === '') {
+        setError(dateOfBirthInput, 'Date of birth is required');
+        return false;
+    } else {
+        setSuccess(dateOfBirthInput);
+        return true;
+    }
+}
+
+dateOfBirthInput.addEventListener('input', validateDateOfBirth);
+
+const today = new Date().toISOString().split('T')[0];
+dateOfBirthInput.setAttribute('max', '2010-12-31');
+dateOfBirthInput.addEventListener('input', function () {
+    const selectedDate = new Date(this.value);
+    const maxDate = new Date('2010-12-31');
+
+    if (selectedDate > maxDate) {
+        this.value = '';
+    }
+});
+
 //Validation for email field
 function checkEmail() {
     var isEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -42,7 +69,6 @@ function checkEmail() {
     }
     else if (!isEmail.test(emailField.value.trim())) {
         SetError(emailField, "Invalid email format");
-
     }
     else {
         setSuccess(emailField)
@@ -73,7 +99,6 @@ function checkState()
     }
     else {
         setSuccess(stateField)
-
     }
 }
 
@@ -85,7 +110,6 @@ function checkCity() {
     }
     else {
         setSuccess(cityField)
-
     }
 }
 
@@ -97,7 +121,6 @@ function checkAddress() {
     }
     else {
         setSuccess(addressField)
-
     }
 }
 
@@ -112,40 +135,47 @@ function checkPincode() {
     }
     else {
         setSuccess(pincodeField)
-
     }
 }
 
 //Setting error message 
+let submitButton = document.getElementById("button");
 function SetError(input, message) {
-    let submitbutton = document.getElementById("button");
     const formControl = input.parentElement;
     const errorDiv = formControl.querySelector('.error-message');
     errorDiv.innerText = message;
+    submitButton.disabled = true;
     errorDiv.style.display = "block";
-    submitbutton.disabled = true;
 }
 
 //Setting success display
 function setSuccess(input) {
-    let submitbutton = document.getElementById("button");
     const formControl = input.parentElement;
     const errorDiv = formControl.querySelector('.error-message');
     errorDiv.innerText = "";
+    submitButton.disabled = false;
     errorDiv.style.display = "none";
-    submitbutton.disabled = false;
 }
 
-//Checking validations when click on button
+//Checking all validations
 function checkValidation() {
-    var isFirstNameValid = checkFirstName();
-    var isLastNameValid = checkLastName();
-    var isEmailValid = checkEmail();
-    var isPhoneValid = checkPhone();
-    var isAddressValid = checkAddress();
-    var isStateValid = checkState();
-    var isCityValid = checkCity();
-    var isPincodeValid = checkPincode();
 
-    return isFirstNameValid && isLastNameValid && isEmailValid && isPhoneValid && isAddressValid && isPincodeValid && isStateValid && isCityValid;
+    checkFirstName();
+    checkLastName();
+    validateDateOfBirth();
+    checkEmail();
+    checkPhone();
+    checkState();
+    checkCity();
+    checkAddress();
+    checkPincode();
 }
+
+
+
+
+
+
+
+
+
